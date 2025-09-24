@@ -10,6 +10,10 @@ async function seed() {
     const adminEmail = process.env.DEFAULT_ADMIN_EMAIL
     const adminPassword = process.env.DEFAULT_ADMIN_PASSWORD
 
+    if (!adminEmail || !adminPassword) {
+      throw new Error('DEFAULT_ADMIN_EMAIL and DEFAULT_ADMIN_PASSWORD must be set in environment variables')
+    }
+
     // Create admin user
     const hashedPassword = await bcrypt.hash(adminPassword, 12)
     const [adminUser] = await db.insert(users).values({

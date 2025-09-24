@@ -51,10 +51,9 @@ export async function GET(request: NextRequest) {
         const tract = item.tracts
         const titleMatch = tract.title?.toLowerCase().includes(searchLower)
         const descMatch = tract.description?.toLowerCase().includes(searchLower)
-        const tagsMatch = Array.isArray(tract.tags) && tract.tags.some((tag: string) => tag.toLowerCase().includes(searchLower))
-        const scriptureMatch = Array.isArray(tract.scriptureReferences) && tract.scriptureReferences.some((ref: string) => ref.toLowerCase().includes(searchLower))
-        
-        return titleMatch || descMatch || tagsMatch || scriptureMatch
+        const denominationMatch = tract.denomination?.toLowerCase().includes(searchLower)
+
+        return titleMatch || descMatch || denominationMatch
       })
     }
 

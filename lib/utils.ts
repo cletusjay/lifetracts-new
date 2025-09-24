@@ -13,7 +13,7 @@ export function formatBytes(bytes: number): string {
   return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i]
 }
 
-export function formatDate(date: Date | number): string {
+export function formatDate(date: Date | number | string): string {
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
